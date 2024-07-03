@@ -48,7 +48,7 @@ const VehicleSelection = () => {
       setSelectedCities(updatedCities);
     } catch (error) {
       console.error("Error selecting city:", error);
-      alert(error.response?.data?.message || "Failed to select city");
+      alert(error.response?.data?.message || "Failed to select vehicle");
     }
   };
 
@@ -69,7 +69,7 @@ const VehicleSelection = () => {
 
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-green-100">
-      <h2 className="text-2xl font-bold mb-4">Select a City to Investigate</h2>
+      <h2 className="text-2xl font-bold mb-4">Select a Vehicle to Investigate</h2>
       {selectedCities.map((selection, copIndex) => (
         <div
           key={selection.id}

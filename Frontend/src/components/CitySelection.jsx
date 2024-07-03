@@ -4,7 +4,7 @@ import axios from "axios";
 
 const CitySelection = () => {
   const [cities, setCities] = useState([]);
-  const [selectedCities, setSelectedCities] = useState([]);
+  const [selectedItems, setSelectedItems] = useState([]);
 
   const navigate = useNavigate();
 
@@ -26,7 +26,7 @@ const CitySelection = () => {
     try {
       const response = await axios.get("http://localhost:5000/api/cops");
       console.log(response);
-      setSelectedCities(response.data);
+      setSelectedItems(response.data);
     } catch (error) {
       console.error("Error fetching cities:", error);
     }
@@ -43,12 +43,12 @@ const CitySelection = () => {
         city: selectedCity.name,
         cityId: selectedCity.id,
       });
-      const updatedCities = selectedCities.map((selection) =>
+      const updatedCities = selectedItems.map((selection) =>
         selection.id === copId
           ? { ...selection, city: selectedCity.name }
           : selection
       );
-      setSelectedCities(updatedCities);
+      setSelectedItems(updatedCities);
     } catch (error) {
       console.error("Error selecting city:", error);
       alert(error.response?.data?.message || "Failed to select city");
@@ -56,8 +56,8 @@ const CitySelection = () => {
   };
 
   const handleSubmit = () => {
-    if (selectedCities.every((selection) => selection.city !== null)) {
-      navigate("/select-vehicle", { state: { selectedCities } });
+    if (selectedItems.every((selection) => selection.city !== null)) {
+      navigate("/select-vehicle", { state: { selectedItems } });
     } else {
       alert("Please select a city for each cop");
     }
@@ -70,7 +70,7 @@ const CitySelection = () => {
   return (
     <div className="h-screen flex flex-col items-center justify-center bg-green-100">
       <h2 className="text-2xl font-bold mb-4">Select a City to Investigate</h2>
-      {selectedCities.map((selection, copIndex) => (
+      {selectedItems.map((selection, copIndex) => (
         <div
           key={selection.id}
           className="flex flex-col justify-center mb-6 w-full"

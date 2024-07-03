@@ -3,7 +3,7 @@
 @tailwind utilities;
 
 .bg-landing {
-    background-image: url('./assets/910637-most-wanted-wallpaper-1920x1200-pc.jpg');
+    background-image: url('./assets/background.jpg!d');
     background-size: cover;
     background-position: center;
   }

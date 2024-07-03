@@ -47,7 +47,7 @@ app.get("/api/vehicles", (req, res) => {
 });
 
 app.post("/api/select-city", (req, res) => {
-  const { copId, copName, city, cityId } = req.body;
+  const { copId, city, cityId } = req.body;
 
   const cop = cops.find((cop) => cop.id === copId);
   if (!cop) {
