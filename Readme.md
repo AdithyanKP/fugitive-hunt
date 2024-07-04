@@ -24,8 +24,8 @@ This is a full-stack web application where users can simulate a game to capture 
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repo-url>
-   cd <your-repo-name>/Backend
+   git clone <https://github.com/AdithyanKP/fugitive-hunt.git>
+   cd Backend
   
 2. **Install Dependancies**:
    ```bash
@@ -40,8 +40,8 @@ This is a full-stack web application where users can simulate a game to capture 
 
 1. **Clone the repository**:
    ```bash
-   git clone <your-repo-url>
-   cd <your-repo-name>/Frontend
+   git clone <https://github.com/AdithyanKP/fugitive-hunt.git>
+   cd Frontend
   
 2. **Install Dependancies**:
    ```bash
