@@ -64,11 +64,12 @@ const CitySelection = () => {
   };
 
   const handleBack = () => {
+   axios.post("http://localhost:5000/api/reset-city");
     navigate("/");
   };
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-green-100">
+    <div className="h-full flex flex-col items-center justify-center p-6 w-full">
       <h2 className="text-2xl font-bold mb-4">Select a City to Investigate</h2>
       {selectedItems.map((selection, copIndex) => (
         <div

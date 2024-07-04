@@ -10,7 +10,7 @@ const ResultPage = () => {
   }, []);
 
   return (
-    <div className="h-screen flex items-center justify-center bg-red-100">
+    <div className="h-screen flex items-center justify-center">
       <div className="text-center">
         <h2 className="text-2xl font-bold mb-4">Result</h2>
         {result ? (

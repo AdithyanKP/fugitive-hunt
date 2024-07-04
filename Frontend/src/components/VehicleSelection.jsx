@@ -63,12 +63,13 @@ const VehicleSelection = () => {
   };
 
   const handleBack = () => {
-    navigate("/");
+    axios.post("http://localhost:5000/api/reset-vehicle");
+    navigate("/select-city");
   };
   console.log("selectedCities", selectedCities);
 
   return (
-    <div className="h-screen flex flex-col items-center justify-center bg-green-100">
+    <div className="h-full flex flex-col items-center justify-cente p-6 overflow-auto">
       <h2 className="text-2xl font-bold mb-4">Select a Vehicle to Investigate</h2>
       {selectedCities.map((selection, copIndex) => (
         <div

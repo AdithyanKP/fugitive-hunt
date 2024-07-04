@@ -46,6 +46,30 @@ app.get("/api/vehicles", (req, res) => {
   res.status(200).json(vehicles);
 });
 
+app.post("/api/reset-city", (req, res) => {
+  cops.forEach((cop) => {
+    cop.city = null;
+  });
+
+  res.status(200).json(vehicles);
+});
+
+app.post("/api/reset-vehicle", (req, res) => {
+  cops.forEach((cop) => {
+    cop.selectedVehicle = null;
+  });
+
+  vehicles.forEach((vehicle) => {
+    if (vehicle.type == "EV Bike") {
+      vehicle.count = 2;
+    } else {
+      vehicle.count = 1;
+    }
+  });
+
+  res.status(200).json(vehicles);
+});
+
 app.post("/api/select-city", (req, res) => {
   const { copId, city, cityId } = req.body;
 
