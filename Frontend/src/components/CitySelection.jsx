@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../constants/constants";
 
 const CitySelection = () => {
   const [cities, setCities] = useState([]);
@@ -13,9 +14,11 @@ const CitySelection = () => {
     fetchCops();
   }, []);
 
+  console.log("base_url",BASE_URL)
+
   const fetchCities = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cities");
+      const response = await axios.get(`${BASE_URL}api/cities`);
       setCities(response.data);
     } catch (error) {
       console.error("Error fetching cities:", error);
@@ -24,7 +27,7 @@ const CitySelection = () => {
 
   const fetchCops = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cops");
+      const response = await axios.get(`${BASE_URL}api/cops`);
       console.log(response);
       setSelectedItems(response.data);
     } catch (error) {
@@ -37,7 +40,7 @@ const CitySelection = () => {
     if (!selectedCity) return;
 
     try {
-      await axios.post("http://localhost:5000/api/select-city", {
+      await axios.post(`${BASE_URL}api/select-city`, {
         copId: copId,
         copName: copName,
         city: selectedCity.name,
@@ -64,7 +67,7 @@ const CitySelection = () => {
   };
 
   const handleBack = () => {
-   axios.post("http://localhost:5000/api/reset-city");
+   axios.post(`${BASE_URL}api/reset-city`);
     navigate("/");
   };
 

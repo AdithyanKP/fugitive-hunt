@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import { BASE_URL } from "../constants/constants";
 
 const VehicleSelection = () => {
   const [selectedCities, setSelectedCities] = useState([]);
@@ -15,7 +16,7 @@ const VehicleSelection = () => {
 
   const fetchVehicles = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/vehicles");
+      const response = await axios.get(`${BASE_URL}api/vehicles`);
       setVehicles(response.data);
     } catch (error) {
       console.error("Error fetching cities:", error);
@@ -24,7 +25,7 @@ const VehicleSelection = () => {
 
   const fetchCops = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/api/cops");
+      const response = await axios.get(`${BASE_URL}api/cops`);
       console.log(response);
       setSelectedCities(response.data);
     } catch (error) {
@@ -34,7 +35,7 @@ const VehicleSelection = () => {
 
   const handleSelectVehicle = async (copId, vehicleType) => {
     try {
-      await axios.post("http://localhost:5000/api/select-vehicle", {
+      await axios.post(`${BASE_URL}api/select-vehicle`, {
         copId: copId,
         vehicleType: vehicleType,
       });
@@ -63,14 +64,16 @@ const VehicleSelection = () => {
   };
 
   const handleBack = () => {
-    axios.post("http://localhost:5000/api/reset-vehicle");
+    axios.post(`${BASE_URL}api/reset-vehicle`);
     navigate("/select-city");
   };
   console.log("selectedCities", selectedCities);
 
   return (
     <div className="h-full flex flex-col items-center justify-cente p-6 overflow-auto">
-      <h2 className="text-2xl font-bold mb-4">Select a Vehicle to Investigate</h2>
+      <h2 className="text-2xl font-bold mb-4">
+        Select a Vehicle to Investigate
+      </h2>
       {selectedCities.map((selection, copIndex) => (
         <div
           key={selection.id}
